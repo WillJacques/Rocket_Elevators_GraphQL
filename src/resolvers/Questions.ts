@@ -4,6 +4,7 @@ import { Interventions } from '../entity/Interventions';
 import { Buildings } from '../entity/Buildings';
 import { Employees } from '../entity/Employees';
 import { FactIntervention } from '../entity/FactIntervention';
+import { Customers } from '../entity/Customers';
 
 @Resolver()
 export class Questions {
@@ -50,6 +51,20 @@ export class Questions {
       }, } );
   }
 
+  @Query(() => Customers)
+  customerInfos(@Arg('email_company_contact') email_company_contact: String): Promise<Customers>  {
+    return Customers.findOneOrFail({ where: { email_company_contact: email_company_contact },join: {
+        alias: 'customer',
+        leftJoinAndSelect: {
+          buildings: 'customer.buildings',
+          batteries: 'buildings.batteries',
+          columns: 'batteries.columns',
+          elevators: 'columns.elevators',
+          interventions: 'elevators.interventions',
+        },
+      }, } );
+  }
+
   @Query(() => [FactIntervention])
   byId(@Arg('ID') ID: Number){
     return getRepository(FactIntervention, 'postgres').find({where: { ID: ID },});
@@ -63,5 +78,10 @@ export class Questions {
   @Query(() => [FactIntervention])
   byEmployeeID(@Arg('employeeID') employeeID: Number){
     return getRepository(FactIntervention, 'postgres').find({where: { employeeID: employeeID },});
+  }
+
+  @Query(() => [Customers])
+  IsCustomer(@Arg('email_company_contact') email_company_contact: String){
+    return getRepository(Customers, 'default').find({where: { email_company_contact: email_company_contact },});
   }
 }
