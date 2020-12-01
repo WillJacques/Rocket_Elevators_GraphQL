@@ -3,7 +3,7 @@ import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, OneToMany } from "t
 import { Batteries } from './Batteries';
 ​
 @ObjectType()
-@Entity('employees', { schema: 'Rocket_app_development' })
+@Entity('employees', { schema: 'wj' })
 export class Employees extends BaseEntity {
     @Field( () => Int)
     @PrimaryGeneratedColumn()

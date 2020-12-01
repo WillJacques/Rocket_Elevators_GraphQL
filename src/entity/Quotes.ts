@@ -2,7 +2,7 @@ import { Field, Int, ObjectType } from "type-graphql"
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm"
 ​
 @ObjectType()
-@Entity('quotes', { schema: 'Rocket_app_development' })
+@Entity('quotes', { schema: 'wj' })
 export class Quotes extends BaseEntity {
     @Field( () => Int)
     @PrimaryGeneratedColumn()

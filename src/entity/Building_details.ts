@@ -4,7 +4,7 @@ import { Buildings } from './Buildings';
 
 ​
 @ObjectType()
-@Entity('building_details', { schema: 'Rocket_app_development' })
+@Entity('building_details', { schema: 'wj' })
 export class Building_details extends BaseEntity {
     @Field( () => Int)
     @PrimaryGeneratedColumn()

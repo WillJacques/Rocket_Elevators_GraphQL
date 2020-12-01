@@ -8,7 +8,7 @@ import { Building_details } from './Building_details';
 @Index("index_buildings_on_address_id", ["address_id"], {})
 @Index("index_buildings_on_customer_id", ["customer_id"], {})
 @ObjectType()
-@Entity('buildings', { schema: 'Rocket_app_development' })
+@Entity('buildings', { schema: 'wj' })
 export class Buildings extends BaseEntity {
     @Field(() => ID)
     @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })

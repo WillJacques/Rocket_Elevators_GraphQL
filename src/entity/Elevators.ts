@@ -6,7 +6,7 @@ import { Interventions } from './Interventions';
 @Index("index_elevators_on_column_id", ["column_id"], {})
 @Index("index_columns_on_customer_id", ["customer_id"], {})
 @ObjectType()
-@Entity('elevators', { schema: 'Rocket_app_development' })
+@Entity('elevators', { schema: 'wj' })
 export class Elevators extends BaseEntity {
     @Field(() => ID)
     @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })

@@ -17,7 +17,7 @@ module.exports = [
     name: "postgres",
     type: "postgres",
     host: "codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com",
-    database: "Fabien_Dimitrov_DWH",
+    database: "William_Jacques_DWH",
     username: "codeboxx",
     password: "Codeboxx1!",
     //database: "postgres",

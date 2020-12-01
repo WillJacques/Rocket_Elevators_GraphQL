@@ -7,7 +7,7 @@ import { Employees } from './Employees';
 
 @Index("index_columns_on_customer_id", ["customer_id"], {})
 @ObjectType()
-@Entity('batteries', { schema: 'Rocket_app_development' })
+@Entity('batteries', { schema: 'wj' })
 export class Batteries extends BaseEntity {
     @Field(() => ID)
     @PrimaryGeneratedColumn({ type: 'bigint', name: 'id' })
