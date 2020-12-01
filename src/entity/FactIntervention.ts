@@ -28,12 +28,12 @@ export class FactIntervention extends BaseEntity {
     @Column()
     elevatorID: number
 ​
-    @Field()
-    @Column()
+    @Field({nullable: true })
+    @Column({nullable: true })
     intervention_start: Date
 
-    @Field()
-    @Column()
+    @Field({nullable: true })
+    @Column({nullable: true })
     intervention_stop: Date
 
     @Field()
