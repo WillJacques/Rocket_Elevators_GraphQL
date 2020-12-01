@@ -1,0 +1,31 @@
+{
+  employeesInfos(id: 8){
+    batteries{
+      id
+      building{
+        building_details{
+          id
+          information_key
+          value
+          created_at
+          updated_at
+          building_id
+          customer_id
+        }
+      }
+    }
+  }
+  byEmployeeID(employeeID: 8){
+    ID
+    employeeID
+    buildingID
+    batteryID
+    columnID
+    elevatorID
+    intervention_start
+    intervention_stop
+    result
+    report
+    status
+  }
+}

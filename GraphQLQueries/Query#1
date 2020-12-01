@@ -1,0 +1,19 @@
+{
+	interventionsInfos(id: 8) {
+    id
+    elevator{
+      column{
+        battery{
+          building{
+            address_of_the_building
+          }
+        }
+      }
+    }
+  } 
+  byId(ID: 8){
+    ID
+    intervention_start
+    intervention_stop
+  }
+}
