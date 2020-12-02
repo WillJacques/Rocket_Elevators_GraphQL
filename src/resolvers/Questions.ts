@@ -52,8 +52,8 @@ export class Questions {
   }
 
   @Query(() => Customers)
-  customerInfos(@Arg('email_company_contact') email_company_contact: String): Promise<Customers>  {
-    return Customers.findOneOrFail({ where: { email_company_contact: email_company_contact },join: {
+  async customerInfos(@Arg('email_company_contact') email_company_contact: String): Promise<Customers>  {
+     const customer = await Customers.findOneOrFail({ where: { email_company_contact: email_company_contact },join: {
         alias: 'customer',
         leftJoinAndSelect: {
           buildings: 'customer.buildings',
@@ -62,6 +62,7 @@ export class Questions {
           elevators: 'customer.elevators',
         },
       }, } );
+      return customer;
   }
 
   @Query(() => FactIntervention)
