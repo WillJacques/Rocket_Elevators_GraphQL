@@ -52,13 +52,32 @@ export class Questions {
   }
 
   @Query(() => Customers)
-  async customerInfos(@Arg('email_company_contact') email_company_contact: String): Promise<Customers>  {
+  async customerBatteries(@Arg('email_company_contact') email_company_contact: String): Promise<Customers>  {
      const customer = await Customers.findOneOrFail({ where: { email_company_contact: email_company_contact },join: {
         alias: 'customer',
         leftJoinAndSelect: {
-          buildings: 'customer.buildings',
           batteries: 'customer.batteries',
+        },
+      }, } );
+      return customer;
+  }
+
+  @Query(() => Customers)
+  async customerColumns(@Arg('email_company_contact') email_company_contact: String): Promise<Customers>  {
+     const customer = await Customers.findOneOrFail({ where: { email_company_contact: email_company_contact },join: {
+        alias: 'customer',
+        leftJoinAndSelect: {
           columns: 'customer.columns',
+        },
+      }, } );
+      return customer;
+  }
+
+  @Query(() => Customers)
+  async customerElevators(@Arg('email_company_contact') email_company_contact: String): Promise<Customers>  {
+     const customer = await Customers.findOneOrFail({ where: { email_company_contact: email_company_contact },join: {
+        alias: 'customer',
+        leftJoinAndSelect: {
           elevators: 'customer.elevators',
         },
       }, } );
