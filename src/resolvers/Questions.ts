@@ -57,9 +57,9 @@ export class Questions {
         alias: 'customer',
         leftJoinAndSelect: {
           buildings: 'customer.buildings',
-          batteries: 'buildings.batteries',
-          columns: 'batteries.columns',
-          elevators: 'columns.elevators',
+          batteries: 'customer.batteries',
+          columns: 'customer.columns',
+          elevators: 'customer.elevators',
           interventions: 'elevators.interventions',
         },
       }, } );

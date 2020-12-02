@@ -1,6 +1,9 @@
 import { Field, ID, ObjectType } from "type-graphql"
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, OneToMany } from "typeorm"
 import { Buildings } from './Buildings';
+import { Elevators } from "./Elevators";
+import { Columns } from "./Columns";
+import { Batteries } from "./Batteries";
 
 
 @ObjectType()
@@ -53,6 +56,7 @@ export class Customers extends BaseEntity {
     @Field()
     @Column()
     created_at: Date
+
     @Field()
     @Column()
     updated_at: Date
@@ -72,4 +76,16 @@ export class Customers extends BaseEntity {
     @Field(() => [Buildings])
     @OneToMany(() => Buildings, buildings => buildings.customer)
     buildings: Buildings[];
+
+    @Field(() => [Elevators])
+    @OneToMany(() => Elevators, elevators => elevators.customer)
+    elevators: Elevators[];
+
+    @Field(() => [Columns])
+    @OneToMany(() => Columns, columns => columns.customer)
+    columns: Columns[];
+
+    @Field(() => [Batteries])
+    @OneToMany(() => Batteries, batteries => batteries.customer)
+    batteries: Batteries[];
 }

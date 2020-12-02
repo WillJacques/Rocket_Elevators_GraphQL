@@ -3,6 +3,7 @@ import { ObjectType, Field, ID } from "type-graphql";
 import { Buildings } from './Buildings';
 import { Columns } from './Columns';
 import { Employees } from './Employees';
+import { Customers } from './Customers';
 
 
 @Index("index_columns_on_customer_id", ["customer_id"], {})
@@ -74,4 +75,9 @@ export class Batteries extends BaseEntity {
     @Field(() => [Columns])
     @OneToMany(() => Columns, columns => columns.battery)
     columns: Columns[];
+
+    @Field(() => Customers)
+    @ManyToOne(() => Customers, customer => customer.batteries)
+    @JoinColumn({ name: 'customer_id', referencedColumnName: 'id' })
+    customer: Customers;
 }

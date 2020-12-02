@@ -2,6 +2,7 @@ import { BaseEntity, Column, Index, Entity, PrimaryGeneratedColumn, ManyToOne, J
 import { ObjectType, Field, ID} from "type-graphql";
 import { Columns } from './Columns';
 import { Interventions } from './Interventions';
+import { Customers } from './Customers';
 
 @Index("index_elevators_on_column_id", ["column_id"], {})
 @Index("index_columns_on_customer_id", ["customer_id"], {})
@@ -72,4 +73,9 @@ export class Elevators extends BaseEntity {
     @Field(() => [Interventions])
     @OneToMany(() => Interventions, interventions => interventions.elevator)
     interventions: Interventions[];
+
+    @Field(() => Customers)
+    @ManyToOne(() => Customers, customer => customer.elevators)
+    @JoinColumn({ name: 'customer_id', referencedColumnName: 'id' })
+    customer: Customers;
 }
