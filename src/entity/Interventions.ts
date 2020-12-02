@@ -43,6 +43,30 @@ export class Interventions extends BaseEntity {
     @Column()
     elevator_id: number;
 
+    @Field(() => ID)
+    @Column()
+    battery_id: number;
+
+    @Field(() => ID)
+    @Column()
+    building_id: number;
+
+    @Field(() => ID)
+    @Column()
+    column_id: number;
+
+    @Field(() => ID)
+    @Column()
+    customer_id: number;
+
+    @Field(() => ID)
+    @Column()
+    employee_id: number;
+
+    @Field(() => ID)
+    @Column()
+    author: number;
+
     @Field(() => Elevators)
     @ManyToOne(() => Elevators, elevator => elevator.interventions)
     @JoinColumn({ name: 'elevator_id', referencedColumnName: 'id' })

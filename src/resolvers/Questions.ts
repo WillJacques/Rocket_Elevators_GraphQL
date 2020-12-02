@@ -1,4 +1,4 @@
-import { Arg, Query, Resolver } from 'type-graphql';
+import { Arg, Field, InputType, Int, Mutation, Query, Resolver } from 'type-graphql';
 import { getRepository } from 'typeorm';
 import { Interventions } from '../entity/Interventions';
 import { Buildings } from '../entity/Buildings';
@@ -6,8 +6,53 @@ import { Employees } from '../entity/Employees';
 import { FactIntervention } from '../entity/FactIntervention';
 import { Customers } from '../entity/Customers';
 
+@InputType()
+class InterventionUpdateInput {
+  @Field(() => String, {nullable: true})
+  status: string;
+}
+
+@InputType()
+class InterventionInput {
+  @Field()
+  status: string;
+  @Field()
+  report: string;
+  @Field()
+  result: string;
+  @Field()
+  elevator_id: number;
+  @Field()
+  battery_id: number;
+  @Field()
+  building_id: number;
+  @Field()
+  column_id: number;
+  @Field()
+  customer_id: number;
+  @Field()
+  employee_id: number;
+  @Field()
+  author: number;
+}
+
 @Resolver()
 export class Questions {
+
+  @Mutation(() => Boolean)
+  async createIntervention(@Arg("options", () => InterventionInput) options: InterventionInput) {
+    await Interventions.insert(options);
+    return true;
+  }
+
+  @Mutation(() => Boolean)
+  async updateIntervention(
+    @Arg("id", () => Int) id: number,
+    @Arg("input", () => InterventionUpdateInput) input: InterventionUpdateInput
+  ) {
+    await Interventions.update({id}, input);
+    return true;
+  }
   
   @Query(() => Interventions)
   interventionsInfos(@Arg('id') id: Number): Promise<Interventions>  {
