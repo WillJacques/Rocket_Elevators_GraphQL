@@ -148,4 +148,9 @@ export class Questions {
   IsCustomer(@Arg('email_company_contact') email_company_contact: String){
     return getRepository(Customers, 'default').find({where: { email_company_contact: email_company_contact },});
   }
+
+  @Query(() => [Customers])
+  customers(){
+    return Customers.find();
+  }
 }
