@@ -65,23 +65,23 @@ export class Questions {
       return customer;
   }
 
-  @Query(() => FactIntervention)
+  @Query(() => [FactIntervention])
   byId(@Arg('ID') ID: Number){
-    return getRepository(FactIntervention, 'postgres').findOne({where: { ID: ID },});
+    return getRepository(FactIntervention, 'postgres').find({where: { ID: ID },});
   }
 
   @Query(() => [FactIntervention])
   byBuildingID(@Arg('buildingID') buildingID: Number){
-    return getRepository(FactIntervention, 'postgres').findOne({where: { buildingID: buildingID },});
+    return getRepository(FactIntervention, 'postgres').find({where: { buildingID: buildingID },});
   }
 
   @Query(() => [FactIntervention])
   byEmployeeID(@Arg('employeeID') employeeID: Number){
-    return getRepository(FactIntervention, 'postgres').findOne({where: { employeeID: employeeID },});
+    return getRepository(FactIntervention, 'postgres').find({where: { employeeID: employeeID },});
   }
 
-  @Query(() => Customers)
+  @Query(() => [Customers])
   IsCustomer(@Arg('email_company_contact') email_company_contact: String){
-    return getRepository(Customers, 'default').findOne({where: { email_company_contact: email_company_contact },});
+    return getRepository(Customers, 'default').find({where: { email_company_contact: email_company_contact },});
   }
 }
