@@ -24,6 +24,7 @@
     "build": "tsc"
   },
   "engines": {
-    "node": "12.x"
+    "node": "12.18.3",
+    "yarn": "1.22.5"
   }
 }
