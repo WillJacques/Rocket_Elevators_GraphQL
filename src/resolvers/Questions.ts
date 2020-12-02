@@ -60,12 +60,11 @@ export class Questions {
           batteries: 'customer.batteries',
           columns: 'customer.columns',
           elevators: 'customer.elevators',
-          interventions: 'elevators.interventions',
         },
       }, } );
   }
 
-  @Query(() => [FactIntervention])
+  @Query(() => FactIntervention)
   byId(@Arg('ID') ID: Number){
     return getRepository(FactIntervention, 'postgres').findOne({where: { ID: ID },});
   }
