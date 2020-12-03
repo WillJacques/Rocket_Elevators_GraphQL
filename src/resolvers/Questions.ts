@@ -121,6 +121,17 @@ export class Questions {
   }
 
   @Query(() => Customers)
+  async customerBuilding(@Arg('email_company_contact') email_company_contact: String): Promise<Customers>  {
+     const customer = await Customers.findOneOrFail({ where: { email_company_contact: email_company_contact },join: {
+        alias: 'customer',
+        leftJoinAndSelect: {
+          buildings: 'customer.buildings',
+        },
+      }, } );
+      return customer;
+  }
+
+  @Query(() => Customers)
   async customerColumns(@Arg('email_company_contact') email_company_contact: String): Promise<Customers>  {
      const customer = await Customers.findOneOrFail({ where: { email_company_contact: email_company_contact },join: {
         alias: 'customer',
