@@ -5,6 +5,9 @@ import { Buildings } from '../entity/Buildings';
 import { Employees } from '../entity/Employees';
 import { FactIntervention } from '../entity/FactIntervention';
 import { Customers } from '../entity/Customers';
+import { Batteries } from '../entity/Batteries';
+import { Columns } from '../entity/Columns';
+import { Elevators } from '../entity/Elevators';
 
 @InputType()
 class InterventionUpdateInput {
@@ -153,4 +156,25 @@ export class Questions {
   customers(){
     return Customers.find();
   }
+
+  @Query(() => [Buildings])
+  buildingsByCustomerID(@Arg('customerID') customerID: Number){
+    return Buildings.find({where: { customer_id: customerID },});
+  }
+
+  @Query(() => [Batteries])
+  batteriesByBuildingID(@Arg('buildingID') buildingID: Number){
+    return Batteries.find({where: { building_id: buildingID },});
+  }
+
+  @Query(() => [Columns])
+  columnsByBatteryID(@Arg('batteryID') batteryID: Number){
+    return Columns.find({where: { battery_id: batteryID },});
+  }
+
+  @Query(() => [Elevators])
+  elevatorsByColumnID(@Arg('columnID') columnID: Number){
+    return Elevators.find({where: { column_id: columnID },});
+  }
+  
 }
