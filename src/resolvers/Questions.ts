@@ -17,12 +17,12 @@ class InterventionUpdateInput {
 
 @InputType()
 class InterventionInput {
-  @Field()
-  status: string;
+  @Field(() => String, {nullable:true})
+  status?: string;
   @Field()
   report: string;
-  @Field()
-  result: string;
+  @Field(() => String, {nullable:true})
+  result?: string;
   @Field()
   elevator_id: number;
   @Field()

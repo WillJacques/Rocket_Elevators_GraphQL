@@ -12,7 +12,7 @@ export class Interventions extends BaseEntity {
     id: number;
     
     @Field()
-    @Column()
+    @Column({ name: 'status', nullable: true })
     status: string;
 
     @Field()
@@ -20,7 +20,7 @@ export class Interventions extends BaseEntity {
     report: string;
 
     @Field()
-    @Column()
+    @Column({ name: 'result', nullable: true })
     result: string;
 
     @Field()
