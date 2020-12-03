@@ -84,6 +84,16 @@ export class Questions {
       }, } );
   }
 
+  @Query(() => Batteries)
+  batteryInfos(@Arg('id') id: Number): Promise<Batteries>  {
+    return Batteries.findOneOrFail({ where: { id: id },join: {
+        alias: 'battery',
+        leftJoinAndSelect: {
+          employee: 'battery.employee',
+        },
+      }, } );
+  }
+
   @Query(() => Employees)
   employeesInfos(@Arg('id') id: Number): Promise<Employees>  {
     return Employees.findOneOrFail({ where: { id: id },join: {
@@ -155,6 +165,11 @@ export class Questions {
   @Query(() => [Customers])
   customers(){
     return Customers.find();
+  }
+
+  @Query(() => [Customers])
+  customerIDByCustomerEmail(@Arg('email_company_contact') email_company_contact: String){
+    return Customers.find({where: { email_company_contact: email_company_contact },});
   }
 
   @Query(() => [Buildings])
