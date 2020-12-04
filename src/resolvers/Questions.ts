@@ -202,6 +202,19 @@ export class Questions {
   elevatorsByColumnID(@Arg('columnID') columnID: Number){
     return Elevators.find({where: { column_id: columnID },});
   }
+
+  @Query(() => [Elevators])
+  elevatorsByID(@Arg('id') id: Number){
+    return Elevators.find({where: { id: id }, join: {
+      alias: 'elevators',
+      leftJoinAndSelect: {
+        columns: 'elevators.column',
+        batteries: 'columns.battery',
+        buildings: 'batteries.building',
+        customers: 'buildings.customer',
+      },
+    }, } );
+  }
   
   @Query(() => Customers)
   async customerInfo(@Arg('email_company_contact') email_company_contact: String): Promise<Customers>  {
