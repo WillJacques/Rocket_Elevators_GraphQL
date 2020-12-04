@@ -4,6 +4,7 @@ import { Buildings } from './Buildings';
 import { Elevators } from "./Elevators";
 import { Columns } from "./Columns";
 import { Batteries } from "./Batteries";
+import { Interventions } from "./Interventions";
 
 
 @ObjectType()
@@ -88,4 +89,8 @@ export class Customers extends BaseEntity {
     @Field(() => [Batteries])
     @OneToMany(() => Batteries, batteries => batteries.customer)
     batteries: Batteries[];
+
+    @Field(() => [Interventions])
+    @OneToMany(() => Interventions, interventions => interventions.customer)
+    interventions: Interventions[];
 }

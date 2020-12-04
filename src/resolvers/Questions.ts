@@ -222,6 +222,7 @@ export class Questions {
      const customer = await Customers.findOneOrFail({ where: { email_company_contact: email_company_contact },join: {
         alias: 'customer',
         leftJoinAndSelect: {
+          interventions: 'customer.interventions',
           buildings: 'customer.buildings',
           batteries: 'buildings.batteries',
           columns: 'batteries.columns',

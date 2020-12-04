@@ -1,6 +1,7 @@
 import { BaseEntity, Column, Index, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn} from "typeorm";
 import { ObjectType, Field, ID } from "type-graphql";
 import { Elevators } from "./Elevators";
+import { Customers } from "./Customers";
 
 @Index("index_interventions_on_elevator_id", ["elevator_id"], {})
 
@@ -71,4 +72,9 @@ export class Interventions extends BaseEntity {
     @ManyToOne(() => Elevators, elevator => elevator.interventions)
     @JoinColumn({ name: 'elevator_id', referencedColumnName: 'id' })
     elevator: Elevators;
+    
+    @Field(() => Customers)
+    @ManyToOne(() => Customers, customer => customer.interventions)
+    @JoinColumn({ name: 'customer_id', referencedColumnName: 'id' })
+    customer: Customers;
 }
