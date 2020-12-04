@@ -203,4 +203,17 @@ export class Questions {
     return Elevators.find({where: { column_id: columnID },});
   }
   
+  @Query(() => Customers)
+  async customerInfo(@Arg('email_company_contact') email_company_contact: String): Promise<Customers>  {
+     const customer = await Customers.findOneOrFail({ where: { email_company_contact: email_company_contact },join: {
+        alias: 'customer',
+        leftJoinAndSelect: {
+          buildings: 'customer.buildings',
+          batteries: 'buildings.batteries',
+          columns: 'batteries.columns',
+          elevators: 'columns.elevators',
+        },
+      }, } );
+      return customer;
+  }
 }
