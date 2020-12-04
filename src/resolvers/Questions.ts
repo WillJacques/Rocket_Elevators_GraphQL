@@ -210,6 +210,7 @@ export class Questions {
       leftJoinAndSelect: {
         columns: 'elevators.column',
         batteries: 'columns.battery',
+        employee: 'batteries.employee',
         buildings: 'batteries.building',
         customers: 'buildings.customer',
       },
