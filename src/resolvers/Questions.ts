@@ -16,6 +16,26 @@ class InterventionUpdateInput {
 }
 
 @InputType()
+class CustomerUpdateInput {
+  @Field(() => String, {nullable: true})
+  technical_manager_email?: string;
+  @Field(() => String, {nullable: true})
+  full_name_service_technical_authority?: string;
+  @Field(() => String, {nullable: true})
+  technical_authority_phone?: string;
+  @Field(() => String, {nullable: true})
+  company_description?: string;
+  @Field(() => String, {nullable: true})
+  company_name?: string;
+  @Field(() => String, {nullable: true})
+  company_headquarter_address?: string;
+  @Field(() => String, {nullable: true})
+  full_name_company_contact?: string;
+  @Field(() => String, {nullable: true})
+  company_contact_phone?: string;
+}
+
+@InputType()
 class InterventionInput {
   @Field(() => String, {nullable:true})
   status?: string;
@@ -46,7 +66,7 @@ export class Questions {
   async createIntervention(@Arg("options", () => InterventionInput) options: InterventionInput) {
     await Interventions.insert(options);
     return true;
-  }
+  } 
 
   @Mutation(() => Boolean)
   async updateIntervention(
@@ -56,6 +76,15 @@ export class Questions {
     await Interventions.update({id}, input);
     return true;
   }
+  @Mutation(() => Boolean)
+  async updateCustomer(
+    @Arg("email_company_contact", () => String) email_company_contact: string,
+    @Arg("input", () => CustomerUpdateInput) input: CustomerUpdateInput
+  ) {
+    await Customers.update({email_company_contact}, input);
+    return true;
+  }
+
   
   @Query(() => Interventions)
   interventionsInfos(@Arg('id') id: Number): Promise<Interventions>  {
