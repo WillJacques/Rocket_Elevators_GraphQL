@@ -207,6 +207,11 @@ export class Questions {
     return Customers.find();
   }
 
+  @Query(() => [Elevators])
+  elevators(){
+    return Elevators.find();
+  }
+
   @Query(() => [Customers])
   customerIDByCustomerEmail(@Arg('email_company_contact') email_company_contact: String){
     return Customers.find({where: { email_company_contact: email_company_contact },});
