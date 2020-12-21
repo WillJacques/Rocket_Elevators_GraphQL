@@ -8,9 +8,9 @@ module.exports = [
     //username: "root",
     //password: "WJg0r3n0!",
     database: "wj",
-    host: "codeboxx.cq6zrczewpu2.us-east-1.rds.amazonaws.com",
-    username: "codeboxx",
-    password: "Codeboxx1!",
+    host: "ls-e1fb9b02772512196d99b3a8ad7e487d387634cf.cekcgmjdil4g.ca-central-1.rds.amazonaws.com",
+    username: "dbmasteruser",
+    password: "WJg0r3n0!",
     entities: ["src/entity/**/*.ts"]
   },
   {
